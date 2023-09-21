@@ -1,8 +1,5 @@
 package com.example.Bookstore.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,69 +8,75 @@ import jakarta.persistence.Id;
 @Entity
 public class Book {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
-    private int isbn;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String title;
 	private String author;
-	private int publicationYear;
-	private double price;
-	
-	public Book(long id, int isbn, String title, String author, int publicationYear) {
+	private int publishingYear;
+	private int isbn;
+	private int price;
+
+	public Book() {
+		
+	}
+
+	public Book(String title, String author, int publishingYear, int isbn, int price) {
 		super();
-		this.id = id;
-		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
-		this.publicationYear = publicationYear;
+		this.publishingYear = publishingYear;
+		this.isbn = isbn;
+		this.price = price;
 	}
-	public long getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public long getIsbn() {
-		return isbn;
-	}
-	public void setIsbn(int isbn) {
-		this.isbn = isbn;
-	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public int getPublicationYear() {
-		return publicationYear;
+
+	public int getPublishingYear() {
+		return publishingYear;
 	}
-	public void setPublicationYear(int publicationYear) {
-		this.publicationYear = publicationYear;
+
+	public void setPublishingYear(int publishingYear) {
+		this.publishingYear = publishingYear;
 	}
-	public double getPrice() {
+
+	public int getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
+	}
+
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	public class BookCommandLineRunner implements CommandLineRunner {
 
-	    @Autowired
-	    private BookRepository bookRepository;
-
-	    @Override
-	    public void run(String... args) throws Exception {
-	        bookRepository.save(new Book( 0001, 3456, "Paasikivi", "Alpo Juntunen", 2021));
-	        bookRepository.save(new Book(0002, 3566, "Samuli", "Johannes Lahtela", 2021));
-	    }
-	}
 }
