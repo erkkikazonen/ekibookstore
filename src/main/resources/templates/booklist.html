@@ -9,16 +9,16 @@
 <body>
     <div class="container"> <!-- Add a container to center the content -->
         <h1>Books</h1>
-        <table class="table table-striped"> <!-- Apply Bootstrap table styles -->
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Author</th> <!-- Corrected typo in "Author" -->
+                    <th>Author</th>
                     <th>Isbn</th>
-                    <th>Publishing Year</th> <!-- Corrected spacing in "Publishing Year" -->
+                    <th>Publishing Year</th>
                     <th>Price</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Category</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +28,7 @@
                     <td th:text="${book.isbn}"></td>
                     <td th:text="${book.publishingYear}"></td>
                     <td th:text="${book.price}"></td>
+                    <td th:text="${book.category.name}"></td> 	
                     <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary">Edit</a></td> <!-- Apply Bootstrap button style -->
                     <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td> <!-- Apply Bootstrap button style -->
                 </tr>
