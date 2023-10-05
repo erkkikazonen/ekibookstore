@@ -40,12 +40,12 @@
                     <td th:text="${book.publishingYear}"></td>
                     <td th:text="${book.price}"></td>
                     <td th:text="${book.category.name}"></td> 	
-                    <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary">Edit</a></td> <!-- Apply Bootstrap button style -->
-                    <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td> <!-- Apply Bootstrap button style -->
+                    <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary">Edit</a></td> <!-- Apply Bootstrap button style -->
+                    <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td> <!-- Apply Bootstrap button style -->
                 </tr>
             </tbody>
         </table>
-        <a href="/add" class="btn btn-success">Add Book</a> <!-- Apply Bootstrap button style -->
+        <td sec:authorize="hasAuthority('ADMIN')"><a href="/add" class="btn btn-success">Add Book</a> <!-- Apply Bootstrap button style -->
     </div> <!-- Close the container div -->
 </body>
 </html>

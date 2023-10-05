@@ -13,10 +13,12 @@ import com.example.Bookstore.domain.AppUser;
 import com.example.Bookstore.domain.AppUserRepository;
 import com.example.Bookstore.domain.SignUpForm;
 
+import jakarta.validation.Valid;
+
 @Controller
 public class UserController {
 	@Autowired
-    private AppUserRepository repository; 
+    private AppUserRepository urepository; 
 	
     @RequestMapping(value = "signup")
     public String addStudent(Model model){
@@ -36,8 +38,8 @@ public class UserController {
 		    	newUser.setPasswordHash(hashPwd);
 		    	newUser.setUsername(signupForm.getUsername());
 		    	newUser.setRole("USER");
-		    	if (repository.findByUsername(signupForm.getUsername()) == null) { // Check if user exists
-		    		repository.save(newUser);
+		    	if (urepository.findByUsername(signupForm.getUsername()) == null) { // Check if user exists
+		    		urepository.save(newUser);
 		    	}
 		    	else {
 	    			bindingResult.rejectValue("username", "err.username", "Username already exists");    	
