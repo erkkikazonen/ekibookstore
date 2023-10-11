@@ -9,4 +9,5 @@ public interface BookRepository extends CrudRepository<Book, Long>
 {
 	
     List<Book> findById(long id);
+    List<Book> findByTitle(String title);
 }
